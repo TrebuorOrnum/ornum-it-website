@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ornum IT Solutions</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
+<title>Ornum IT Solutions</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>
 
 /* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
@@ -120,28 +115,18 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 .reveal{opacity:0;transform:translateY(40px);transition:1s}
 .reveal.active{opacity:1;transform:translateY(0)}
 
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav>
+</style></head><body><nav>
 <div class="logo"><i class="fas fa-shield-alt"></i> Ornum IT</div>
 <i class="fas fa-bars hamburger"></i>
 <ul class="nav-links">
 <li><a href="#services">Services</a></li>
-<li><a href="#portfolio">Projects</a></li>
 <li><a href="#pricing">Estimator</a></li>
 <li><a href="#booking">Booking</a></li>
 <li><a href="#tracker">Track Repair</a></li>
 <li><a href="#contact">Contact</a></li>
 <li><a href="#map">Directions</a></li>
 </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
+</nav><section class="hero">
 <video class="hero-video" autoplay muted loop playsinline>
 <source src="typemotion-1770481248588.mp4" type="video/mp4">
 </video>
@@ -150,10 +135,7 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 <p>PC Repairs, Upgrades, Networking, Websites & Automation Systems</p>
 <a href="#booking" class="btn">Book Repair</a>
 </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="reveal">
+</section><section id="services" class="reveal">
 <h2 class="section-title">Our Services</h2>
 <div class="service-grid">
 <div class="card"><i class="fas fa-laptop-medical"></i><h3>PC & Laptop Repairs</h3></div>
@@ -161,10 +143,7 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 <div class="card"><i class="fas fa-network-wired"></i><h3>Networking & WiFi</h3></div>
 <div class="card"><i class="fas fa-code"></i><h3>Websites & AI Systems</h3></div>
 </div>
-</section>
-
-<!-- PRICE ESTIMATOR -->
-<section id="pricing" class="reveal">
+</section><section id="pricing" class="reveal">
 <h2 class="section-title">Instant Price Estimator</h2>
 <select id="repairType">
 <option value="0">Select Service</option>
@@ -175,29 +154,20 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 <option value="350">Software Install - R350</option>
 </select>
 <div class="price-box">Estimated Price: R<span id="price">0</span></div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking" class="reveal">
+</section><section id="booking" class="reveal">
 <h2 class="section-title">WhatsApp Booking</h2>
 <input type="text" id="name" placeholder="Your Name">
 <input type="text" id="device" placeholder="Device (Laptop/PC)">
 <input type="text" id="problem" placeholder="Problem Description">
 <button class="btn" onclick="sendWhatsApp()">Send Booking</button>
-</section>
-
-<!-- TRACKER -->
-<section id="tracker" class="reveal">
+</section><section id="tracker" class="reveal">
 <h2 class="section-title">Repair Status Tracker</h2>
 <div class="tracker-box">
 <input type="text" id="ticketInput" class="tracker-input" placeholder="Example: IT1005">
 <button class="tracker-btn" onclick="checkStatus()">Check Status</button>
 <div id="statusResult"></div>
 </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="reveal">
+</section><section id="contact" class="reveal">
 <h2 class="section-title">Contact Us</h2>
 <div class="contact-container">
 <div class="contact-card">
@@ -213,24 +183,27 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 <a class="contact-btn" href="mailto:ornum.it.solutions@gmail.com">Send Email</a>
 </div>
 </div>
-</section>
-
-<!-- MAP -->
-<section id="map" class="map reveal">
+</section><section id="map" class="map reveal">
 <h2 class="section-title">Directions</h2>
-<iframe src="https://maps.google.com/maps?q=Cape%20Town&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-</section>
-
-<a class="whatsapp-float" href="https://wa.me/27615033085?text=Hi%20I%20need%20a%20repair%20quote" target="_blank">💬</a>
+<iframe
+src="https://www.google.com/maps?q=Oakbury%20Lane%20Brackenfell%20South%20Western%20Cape%207560%20South%20Africa&output=embed"
+width="100%"
+height="350"
+style="border:0;border-radius:12px;"
+allowfullscreen=""
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</section><a class="whatsapp-float" href="https://wa.me/27615033085?text=Hi%20I%20need%20a%20repair%20quote" target="_blank">💬</a>
 
 <script>
 
-/* MENU */
+/* MOBILE MENU */
 document.querySelector(".hamburger").onclick=()=>{
 document.querySelector(".nav-links").classList.toggle("active");
 };
 
-/* SCROLL ANIMATION */
+/* SCROLL REVEAL */
 const reveals=document.querySelectorAll(".reveal");
 window.addEventListener("scroll",()=>{
 reveals.forEach(r=>{
@@ -238,7 +211,7 @@ if(r.getBoundingClientRect().top<window.innerHeight-80) r.classList.add("active"
 });
 });
 
-/* PRICE */
+/* PRICE ESTIMATOR */
 document.getElementById("repairType").onchange=function(){
 document.getElementById("price").innerText=this.value;
 };
@@ -257,7 +230,7 @@ Problem: ${problem}`;
 window.open("https://wa.me/27615033085?text="+encodeURIComponent(msg));
 }
 
-/* REPAIR DATABASE */
+/* TRACKER DEMO DATABASE */
 const repairs={
 "IT1001":{status:"Received",color:"#ffaa00",message:"Device booked in and waiting for technician"},
 "IT1002":{status:"In Progress",color:"#00e5ff",message:"Technician is working on your device"},
@@ -275,7 +248,7 @@ result.innerHTML=`<div class="status-badge" style="background:${repairs[ticket].
 result.innerHTML=`<div class="status-badge" style="background:#ff0000">Job Not Found</div>`;
 }
 
-</script>
+}
 
-</body>
+</script></body>
 </html>
