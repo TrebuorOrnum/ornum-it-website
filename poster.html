@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ornum IT Solutions</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050a14; /* Dark background to match poster */
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Container ensures the buttons stay in the right place relative to the image */
+        .poster-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Limits width for mobile look */
+        }
+
+        /* The marketing poster image */
+        .poster-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Common style for all clickable areas (Hotspots) */
+        .hotspot {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0); /* Transparent */
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.2s;
+        }
+
+        /* Highlight button when hovered (optional, good for testing) */
+        .hotspot:hover {
+            background-color: rgba(0, 255, 255, 0.1);
+            border: 2px solid cyan;
+        }
+
+        /* --- COORDINATES (Adjust percentages to fit your specific image) --- */
+        
+        /* 1. PC & Laptop Repairs Area */
+        .link-repairs {
+            top: 20%;      /* Distance from top */
+            left: 10%;     /* Distance from left */
+            width: 80%;    /* Width of the button area */
+            height: 10%;   /* Height of the button area */
+        }
+
+        /* 2. SSD & RAM Upgrades Area */
+        .link-upgrades {
+            top: 32%;
+            left: 10%;
+            width: 80%;
+            height: 10%;
+        }
+
+        /* 3. Networking & WiFi Area */
+        .link-network {
+            top: 44%;
+            left: 10%;
+            width: 80%;
+            height: 10%;
+        }
+
+        /* 4. Book a Repair Area */
+        .link-book {
+            top: 56%;
+            left: 10%;
+            width: 80%;
+            height: 10%;
+        }
+
+        /* 5. Call Now Button */
+        .link-call {
+            top: 75%;
+            left: 10%;
+            width: 38%;
+            height: 8%;
+        }
+
+        /* 6. WhatsApp Button */
+        .link-whatsapp {
+            top: 75%;
+            right: 10%;
+            width: 38%;
+            height: 8%;
+        }
+
+        /* 7. Get Directions Button */
+        .link-map {
+            bottom: 5%;
+            left: 10%;
+            width: 80%;
+            height: 8%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        <img src="poster.jpg" alt="Ornum IT Services" class="poster-image">
+
+        <a href="https://trebuorornum.github.io/ornum-it-website/" class="hotspot link-repairs" title="PC Repairs"></a>
+
+        <a href="https://trebuorornum.github.io/ornum-it-website/" class="hotspot link-upgrades" title="Upgrades"></a>
+
+        <a href="https://trebuorornum.github.io/ornum-it-website/" class="hotspot link-network" title="Networking"></a>
+
+        <a href="https://wa.me/27123456789" class="hotspot link-book" title="Book on WhatsApp"></a>
+
+        <a href="tel:+27123456789" class="hotspot link-call" title="Call Us"></a>
+
+        <a href="https://wa.me/27123456789" class="hotspot link-whatsapp" title="Message on WhatsApp"></a>
+
+        <a href="https://maps.google.com/?q=Ornum+IT" class="hotspot link-map" title="Get Directions"></a>
+    </div>
+
+</body>
+</html>
