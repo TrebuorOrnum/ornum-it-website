@@ -193,7 +193,13 @@ style="border:0;border-radius:12px;"
 allowfullscreen=""
 loading="lazy"
 referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+</iframe> <br><br>
+
+<div style="text-align:center;">
+<a href="https://maps.app.goo.gl/CAuXKWrebg4RAYX8A" target="_blank" class="btn">
+📍 Get Directions
+</a>
+</div>
 </section><a class="whatsapp-float" href="https://wa.me/27615033085?text=Hi%20I%20need%20a%20repair%20quote" target="_blank">💬</a>
 
 <script>
@@ -250,5 +256,58 @@ result.innerHTML=`<div class="status-badge" style="background:#ff0000">Job Not F
 
 }
 
+</script><!-- GOOGLE REVIEWS -->
+<section id="reviews" class="reveal">
+<h2 class="section-title">Customer Reviews</h2>
+
+<div id="google-reviews" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;"></div>
+
+<div style="text-align:center;margin-top:30px;">
+<a class="btn" href="https://g.page/r/ChIJJXxw7n1RzB0R9cCjGTVRrks/review" target="_blank">
+Leave Us a Google Review
+</a>
+</div>
+</section>
+
+<script>
+function initMap(){
+const placeId = "ChIJJXxw7n1RzB0R9cCjGTVRrks";
+
+const map = new google.maps.Map(document.createElement('div'));
+const service = new google.maps.places.PlacesService(map);
+
+service.getDetails({
+placeId: placeId,
+fields: ['name','rating','reviews']
+}, function(place, status){
+
+if(status !== google.maps.places.PlacesServiceStatus.OK) return;
+
+const container = document.getElementById("google-reviews");
+container.innerHTML = "";
+
+place.reviews.slice(0,6).forEach(review => {
+
+let stars = "";
+for(let i=0;i<review.rating;i++){
+stars += "⭐";
+}
+
+container.innerHTML += `
+<div class="card">
+<h3>${review.author_name}</h3>
+<p style="color:#00e5ff;">${stars}</p>
+<p style="margin-top:10px;font-size:14px;line-height:1.5;">
+${review.text}
+</p>
+</div>
+`;
+});
+});
+}
+</script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfaF-2MwY-gsxW47AgTJLWgKQ7zjgQyU&libraries=places&callback=initMap">
 </script></body>
 </html>
