@@ -1,8 +1,13 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ornum IT Solutions</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>
+<title>Ornum IT Solutions</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
 
 /* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
@@ -12,8 +17,8 @@ section{padding:90px 20px;max-width:1100px;margin:auto}
 /* NAVBAR */
 nav{
 position:fixed;top:0;left:0;width:100%;
-background:rgba(5,8,16,.9);
-backdrop-filter:blur(8px);
+background:rgba(5,8,16,.92);
+backdrop-filter:blur(10px);
 display:flex;justify-content:space-between;align-items:center;
 padding:14px 25px;z-index:999;
 border-bottom:1px solid #00e5ff33;
@@ -47,7 +52,7 @@ content:"";position:absolute;top:0;left:0;width:100%;height:100%;
 background:radial-gradient(circle at center,#00e5ff22,transparent 65%);
 z-index:-1;
 }
-.hero-content h1{font-size:40px;color:#00e5ff;text-shadow:0 0 20px #00e5ff;margin-bottom:15px}
+.hero-content h1{font-size:42px;color:#00e5ff;text-shadow:0 0 20px #00e5ff;margin-bottom:15px}
 .btn{
 display:inline-block;padding:13px 25px;background:#00e5ff;color:#00141a;
 text-decoration:none;border-radius:6px;font-weight:bold;
@@ -64,6 +69,13 @@ box-shadow:0 0 18px #00e5ff;transition:.3s;
 .card:hover{transform:translateY(-8px);box-shadow:0 0 25px #00e5ff55}
 .card i{font-size:40px;margin-bottom:15px;color:#00e5ff;text-shadow:0 0 12px #00e5ff}
 
+/* PROJECT LINKS */
+.project-link{
+display:inline-block;margin-top:15px;padding:10px 18px;
+background:#00e5ff;color:#00141a;border-radius:6px;
+text-decoration:none;font-weight:bold;
+}
+
 /* FORM */
 input,select{
 width:100%;padding:12px;margin:10px 0;border:none;border-radius:6px;
@@ -72,35 +84,9 @@ background:#0f1a33;color:#fff;
 .price-box{font-size:22px;margin-top:10px;color:#00e5ff;text-align:center}
 
 /* CONTACT */
-.contact-container{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px
-}
-.contact-card{
-background:#0b0b1a;padding:25px;border-radius:15px;
-box-shadow:0 0 15px #00f0ff33;transition:.3s;text-align:center
-}
-.contact-card:hover{transform:translateY(-5px);box-shadow:0 0 25px #00f0ff}
-.contact-btn{
-display:inline-block;margin-top:12px;padding:12px 18px;border-radius:10px;
-background:#00f0ff;color:#000;font-weight:bold;text-decoration:none
-}
-
-/* TRACKER */
-.tracker-box{
-max-width:500px;margin:auto;background:#0b0b1a;padding:30px;
-border-radius:15px;box-shadow:0 0 25px #00f0ff44;text-align:center
-}
-.tracker-input{
-width:100%;padding:15px;border-radius:10px;border:none;
-background:#020208;color:white;font-size:18px;text-align:center;margin-top:15px
-}
-.tracker-btn{
-margin-top:15px;padding:12px 25px;border:none;border-radius:10px;
-background:#00f0ff;color:black;font-weight:bold;cursor:pointer
-}
-.status-badge{
-padding:10px 18px;border-radius:10px;display:inline-block;margin-top:15px;font-weight:bold
-}
+.contact-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.contact-card{background:#0b0b1a;padding:25px;border-radius:15px;box-shadow:0 0 15px #00f0ff33;text-align:center}
+.contact-btn{display:inline-block;margin-top:12px;padding:12px 18px;border-radius:10px;background:#00f0ff;color:#000;font-weight:bold;text-decoration:none}
 
 /* MAP */
 .map iframe{width:100%;height:350px;border:0;border-radius:12px}
@@ -115,27 +101,39 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 .reveal{opacity:0;transform:translateY(40px);transition:1s}
 .reveal.active{opacity:1;transform:translateY(0)}
 
-</style></head><body><nav>
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
 <div class="logo"><i class="fas fa-shield-alt"></i> Ornum IT</div>
 <i class="fas fa-bars hamburger"></i>
 <ul class="nav-links">
 <li><a href="#services">Services</a></li>
+<li><a href="#projects">Projects</a></li>
 <li><a href="#pricing">Estimator</a></li>
 <li><a href="#booking">Booking</a></li>
-<li><a href="#tracker">Track Repair</a></li>
 <li><a href="#contact">Contact</a></li>
 <li><a href="#map">Directions</a></li>
 </ul>
-</nav><section class="hero">
+</nav>
+
+<!-- HERO -->
+<section class="hero">
 <video class="hero-video" autoplay muted loop playsinline>
 <source src="typemotion-1770481248588.mp4" type="video/mp4">
 </video>
 <div class="hero-content">
 <h1>Professional IT Repairs & AI Solutions</h1>
-<p>PC Repairs, Upgrades, Networking, Websites & Automation Systems</p>
+<p>PC Repairs • Upgrades • Networking • Websites • Automation</p>
 <a href="#booking" class="btn">Book Repair</a>
 </div>
-</section><section id="services" class="reveal">
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="reveal">
 <h2 class="section-title">Our Services</h2>
 <div class="service-grid">
 <div class="card"><i class="fas fa-laptop-medical"></i><h3>PC & Laptop Repairs</h3></div>
@@ -143,7 +141,39 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 <div class="card"><i class="fas fa-network-wired"></i><h3>Networking & WiFi</h3></div>
 <div class="card"><i class="fas fa-code"></i><h3>Websites & AI Systems</h3></div>
 </div>
-</section><section id="pricing" class="reveal">
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+<h2 class="section-title">Example Projects</h2>
+<div class="service-grid">
+
+<div class="card">
+<i class="fas fa-gamepad"></i>
+<h3>AI Gaming Assistant</h3>
+<p>Interactive browser AI assistant platform.</p>
+<a class="project-link" href="https://tetris-image-reveal-1005191863088.us-west1.run.app/" target="_blank">Open Demo</a>
+</div>
+
+<div class="card">
+<i class="fas fa-book-open"></i>
+<h3>AI Story Generator</h3>
+<p>Automated storytelling web application.</p>
+<a class="project-link" href="https://storytime-ai-400387079194.us-west1.run.app" target="_blank">Open Demo</a>
+</div>
+
+<div class="card">
+<i class="fas fa-satellite-dish"></i>
+<h3>Streaming Platform</h3>
+<p>Hosted online streaming system.</p>
+<a class="project-link" href="https://studio--studio-222474804-ba824.us-central1.hosted.app" target="_blank">Open Demo</a>
+</div>
+
+</div>
+</section>
+
+<!-- PRICE ESTIMATOR -->
+<section id="pricing" class="reveal">
 <h2 class="section-title">Instant Price Estimator</h2>
 <select id="repairType">
 <option value="0">Select Service</option>
@@ -154,57 +184,51 @@ text-decoration:none;box-shadow:0 0 15px #25D366;z-index:999;
 <option value="350">Software Install - R350</option>
 </select>
 <div class="price-box">Estimated Price: R<span id="price">0</span></div>
-</section><section id="booking" class="reveal">
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="reveal">
 <h2 class="section-title">WhatsApp Booking</h2>
 <input type="text" id="name" placeholder="Your Name">
 <input type="text" id="device" placeholder="Device (Laptop/PC)">
 <input type="text" id="problem" placeholder="Problem Description">
 <button class="btn" onclick="sendWhatsApp()">Send Booking</button>
-</section><section id="tracker" class="reveal">
-<h2 class="section-title">Repair Status Tracker</h2>
-<div class="tracker-box">
-<input type="text" id="ticketInput" class="tracker-input" placeholder="Example: IT1005">
-<button class="tracker-btn" onclick="checkStatus()">Check Status</button>
-<div id="statusResult"></div>
-</div>
-</section><section id="contact" class="reveal">
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
 <h2 class="section-title">Contact Us</h2>
 <div class="contact-container">
 <div class="contact-card">
 <h3>📞 Call</h3>
-<a class="contact-btn" href="tel:+27615033085">Call Now</a>
+<a class="contact-btn" href="tel:+27615033085">061 503 3085</a>
 </div>
 <div class="contact-card">
 <h3>💬 WhatsApp</h3>
-<a class="contact-btn" href="https://wa.me/27615033085?text=Hi%20I%20need%20a%20repair%20quote" target="_blank">Message Us</a>
+<a class="contact-btn" href="https://wa.me/27615033085" target="_blank">Chat Now</a>
 </div>
 <div class="contact-card">
 <h3>📧 Email</h3>
-<a class="contact-btn" href="mailto:ornum.it.solutions@gmail.com">Send Email</a>
+<a class="contact-btn" href="mailto:ornum.it.solutions@gmail.com">ornum.it.solutions@gmail.com</a>
 </div>
 </div>
-</section><section id="map" class="map reveal">
-<h2 class="section-title">Directions</h2>
-<iframe
-src="https://www.google.com/maps?q=Oakbury%20Lane%20Brackenfell%20South%20Western%20Cape%207560%20South%20Africa&output=embed"
-width="100%"
-height="350"
-style="border:0;border-radius:12px;"
-allowfullscreen=""
-loading="lazy"
-referrerpolicy="no-referrer-when-downgrade">
-</iframe> <br><br>
+</section>
 
+<!-- MAP -->
+<section id="map" class="map reveal">
+<h2 class="section-title">Directions</h2>
+<iframe src="https://www.google.com/maps?q=Oakbury%20Lane%20Brackenfell%20South%20Western%20Cape%207560%20South%20Africa&output=embed"></iframe>
+<br><br>
 <div style="text-align:center;">
-<a href="https://maps.app.goo.gl/CAuXKWrebg4RAYX8A" target="_blank" class="btn">
-📍 Get Directions
-</a>
+<a href="https://maps.app.goo.gl/CAuXKWrebg4RAYX8A" target="_blank" class="btn">Open in Google Maps</a>
 </div>
-</section><a class="whatsapp-float" href="https://wa.me/27615033085?text=Hi%20I%20need%20a%20repair%20quote" target="_blank">💬</a>
+</section>
+
+<a class="whatsapp-float" href="https://wa.me/27615033085" target="_blank">💬</a>
 
 <script>
 
-/* MOBILE MENU */
+/* MENU */
 document.querySelector(".hamburger").onclick=()=>{
 document.querySelector(".nav-links").classList.toggle("active");
 };
@@ -222,13 +246,13 @@ document.getElementById("repairType").onchange=function(){
 document.getElementById("price").innerText=this.value;
 };
 
-/* WHATSAPP BOOKING */
+/* WHATSAPP */
 function sendWhatsApp(){
 let name=document.getElementById("name").value;
 let device=document.getElementById("device").value;
 let problem=document.getElementById("problem").value;
 
-let msg=`Hello Ornum IT,
+let msg=`Hello Ornum IT Solutions,
 Name: ${name}
 Device: ${device}
 Problem: ${problem}`;
@@ -236,27 +260,8 @@ Problem: ${problem}`;
 window.open("https://wa.me/27615033085?text="+encodeURIComponent(msg));
 }
 
-/* TRACKER DEMO DATABASE */
-const repairs={
-"IT1001":{status:"Received",color:"#ffaa00",message:"Device booked in and waiting for technician"},
-"IT1002":{status:"In Progress",color:"#00e5ff",message:"Technician is working on your device"},
-"IT1003":{status:"Waiting for Parts",color:"#ff4444",message:"Waiting for replacement parts"},
-"IT1004":{status:"Ready for Collection",color:"#00ff99",message:"Your device is ready for pickup"}
-};
-
-function checkStatus(){
-let ticket=document.getElementById("ticketInput").value.toUpperCase().trim();
-let result=document.getElementById("statusResult");
-
-if(repairs[ticket]){
-result.innerHTML=`<div class="status-badge" style="background:${repairs[ticket].color}">${repairs[ticket].status}</div><p>${repairs[ticket].message}</p>`;
-}else{
-result.innerHTML=`<div class="status-badge" style="background:#ff0000">Job Not Found</div>`;
-}
-
-}
-
-</script><!-- GOOGLE REVIEWS -->
+</script>
+<!-- GOOGLE REVIEWS -->
 <section id="reviews" class="reveal">
 <h2 class="section-title">Customer Reviews</h2>
 
@@ -309,5 +314,6 @@ ${review.text}
 
 <script async
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfaF-2MwY-gsxW47AgTJLWgKQ7zjgQyU&libraries=places&callback=initMap">
-</script></body>
+</script>
+</body>
 </html>
