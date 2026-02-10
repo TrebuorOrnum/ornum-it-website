@@ -384,7 +384,7 @@ cursor:pointer;
 }
 </style>
 
-<div id="aiButton">Ask Ornum AI</div>
+<div id="aiButton"><a href="./OrnumAii.html">Ask Ornum AI</a></div>
 
 <div id="aiBox">
 <div id="aiMessages"></div>
@@ -396,12 +396,26 @@ cursor:pointer;
 
 <script>
 
-const WORKER_URL = "https://ornum-aii.roubertmunro13.workers.dev/";
+/*const WORKER_URL = "ornum-aii.roubertmunro13.workers.dev";
+*/
+const API_KEY = "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";
+
+
+let history = JSON.parse(localStorage.getItem("ornum_history") || "[]");
 
 document.getElementById("aiButton").onclick=()=>{
 const box=document.getElementById("aiBox");
 box.style.display = box.style.display==="flex"?"none":"flex";
+loadHistory();
 };
+
+function loadHistory(){
+const container=document.getElementById("aiMessages");
+container.innerHTML="";
+history.forEach(m=>{
+addMsg(m.content, m.role==="user"?"aiUser":"aiBot");
+});
+}
 
 function addMsg(text,cls){
 const div=document.createElement("div");
@@ -416,27 +430,69 @@ const input=document.getElementById("aiText");
 const msg=input.value.trim();
 if(!msg) return;
 
+history.push({role:"user",content:msg});
+localStorage.setItem("ornum_history",JSON.stringify(history));
+
 addMsg(msg,"aiUser");
 input.value="";
 
 addMsg("Thinking...","aiBot");
+detectQuote(reply);
 
 const res=await fetch(WORKER_URL,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-messages:[{role:"user",content:msg}]
-})
+body:JSON.stringify({messages:history})
 });
 
 const data=await res.json();
+
 document.querySelectorAll(".aiBot").forEach(e=>{
 if(e.innerText==="Thinking...") e.remove();
 });
 
-addMsg(data.choices[0].message.content,"aiBot");
-}
+const reply=data.choices[0].message.content;
 
+history.push({role:"assistant",content:reply});
+localStorage.setItem("ornum_history",JSON.stringify(history));
+
+addMsg(reply,"aiBot");
+}
+function detectQuote(text){
+if(!text.includes("[QUOTE]")) return;
+
+const service = text.match(/Service:\s*(.*)/)?.[1];
+const cost = text.match(/Estimated Cost:\s*(.*)/)?.[1];
+const notes = text.match(/Notes:\s*(.*)/)?.[1];
+
+const message =
+`Hello Ornum IT, I would like to book a repair.
+
+Service: ${service}
+Quoted: ${cost}
+Problem: ${notes}
+
+My name:
+My device model:
+My location:`;
+
+// create WhatsApp button
+const btn=document.createElement("button");
+btn.innerText="Book on WhatsApp";
+btn.style.margin="10px";
+btn.style.background="#25D366";
+btn.style.color="white";
+btn.style.border="none";
+btn.style.padding="10px";
+btn.style.borderRadius="8px";
+
+btn.onclick=()=>{
+window.open("https://wa.me/27615033085?text="+encodeURIComponent(message),"_blank");
+};
+
+document.getElementById("aiMessages").appendChild(btn);
+}
 </script>
+
 </body>
 </html>
