@@ -1,0 +1,438 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #0056b3; /* Tech Blue */
+    --secondary-color: #f39c12; /* Repair Orange */
+    --dark: #333;
+    --light: #f4f4f4;
+    --white: #fff;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--dark);
+}
+
+/* Container Utility */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--dark);
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.highlight {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+.btn-nav {
+    background: var(--secondary-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: var(--dark) !important;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-btns {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    margin: 0 10px;
+}
+
+.btn-primary {
+    background: var(--secondary-color);
+    color: var(--dark);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Services */
+.services {
+    padding: 80px 0;
+    background: var(--light);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card .icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card ul {
+    list-style: none;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.card ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.card ul li i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+/* About / Features */
+.about {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.feature-item {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+/* Contact */
+.contact {
+    background: var(--dark);
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.contact p {
+    margin-bottom: 30px;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.info-box i {
+    color: var(--secondary-color);
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .features {
+        flex-direction: column;
+    }
+    
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-float i {
+    font-size: 24px;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: translateY(-5px);
+    color: white;
+}
+
+/* On small screens, show only the icon to save space */
+@media (max-width: 480px) {
+    .whatsapp-float span {
+        display: none;
+    }
+    .whatsapp-float {
+        padding: 15px;
+        border-radius: 50%;
+    }
+}
+.flyer-promo img:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.flyer-promo .btn-primary i {
+    margin-right: 8px;
+}
+
+/* --- BURGER MENU STYLES --- */
+
+/* Hide burger by default (Desktop) */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show burger on mobile */
+    }
+
+    .nav-links {
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        background: #0d1b2a; /* Same Navy as Flyer */
+        position: absolute;
+        top: 60px; /* Below the navbar */
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show menu when active class is added */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
+    }
+}
+
+/* HERO VIDEO INTEGRATION */
+.hero {
+    position: relative;
+    height: 85vh; /* Slightly taller for cinematic feel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Ensures video fills the space without stretching */
+}
+
+/* Dark overlay to make text pop against the video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 27, 42, 0.6); /* Navy tint matching flyer */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Sits above video and overlay */
+    text-align: center;
+}
+
+/* Ensure the hero buttons look like the flyer buttons */
+.hero-btns .btn {
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* --- SCROLL REVEAL ANIMATION --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+

@@ -1,204 +1,250 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ornum AI</title>
+<title>Ornum IT Solutions</title>
 
 <style>
 body{
-    margin:0;
-    background:#0f172a;
-    font-family:Segoe UI, Arial;
-    color:white;
-    display:flex;
-    flex-direction:column;
-    height:95vh;
+font-family:Arial,Helvetica,sans-serif;
+margin:0;
+background:#0f172a;
+color:white;
 }
 
 header{
-    padding:14px 18px;
-    background:#020617;
-    font-size:20px;
-    font-weight:600;
-    border-bottom:1px solid #1e293b;
+background:#020617;
+padding:18px;
+text-align:center;
+font-size:26px;
+font-weight:bold;
 }
 
-#chat{
-    flex:1;
-    overflow-y:auto;
-    padding:20px;
+section{
+padding:40px 20px;
+max-width:900px;
+margin:auto;
 }
 
-.message{
-    max-width:700px;
-    padding:12px 16px;
-    margin:10px 0;
-    border-radius:14px;
-    line-height:1.4;
+.card{
+background:#1e293b;
+padding:20px;
+margin:15px 0;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,.4);
 }
 
-.user{
-    background:#2563eb;
-    margin-left:auto;
+h2{color:#38bdf8}
+
+footer{
+text-align:center;
+padding:25px;
+background:#020617;
+margin-top:40px;
 }
 
-.bot{
-    background:#1e293b;
-}
-
-#inputArea{
-    display:flex;
-    padding:12px;
-    background:#020617;
-    border-top:1px solid #1e293b;
-}
-
-input{
-    flex:1;
-    padding:20px;
-    border-radius:50px;
-    border:none;
-    outline:none;
-    background:#0f172a;
-    color:white;
-}
-
-button{
-    margin-left:10px;
-    padding:12px 18px;
-    border:none;
-    border-radius:10px;
-    background:#22c55e;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-button:hover{ background:#16a34a; }
+/* ---------- AI BUTTON ---------- */
 
 #aiButton{
 position:fixed;
-bottom:80px;
+bottom:20px;
 right:20px;
-background:blue;
-color: red;
+background:#22c55e;
 padding:14px 18px;
-border-radius:50px;
-font-weight:bold;
+border-radius:40px;
 cursor:pointer;
-z-index:9999;
+font-weight:bold;
+box-shadow:0 0 12px rgba(0,0,0,.5);
 }
+
+/* ---------- AI BOX ---------- */
 
 #aiBox{
 position:fixed;
-bottom:80px;
+bottom:85px;
 right:20px;
 width:320px;
-height:420px;
+height:460px;
 background:#020617;
-border:1px solid #1e293b;
-border-radius:14px;
+border-radius:15px;
 display:none;
 flex-direction:column;
-z-index:9999;
+overflow:hidden;
+box-shadow:0 0 20px rgba(0,0,0,.8);
 }
 
 #aiMessages{
 flex:1;
 overflow-y:auto;
-padding:10px;
+padding:12px;
 font-size:14px;
 }
 
-.aiUser{background:#2563eb;padding:8px;border-radius:10px;margin:6px;color:white;}
-.aiBot{background:#1e293b;padding:8px;border-radius:10px;margin:6px;color:white;}
+.aiUser{
+background:#2563eb;
+padding:8px 10px;
+margin:6px 0;
+border-radius:10px;
+align-self:flex-end;
+max-width:80%;
+}
+
+.aiBot{
+background:#334155;
+padding:8px 10px;
+margin:6px 0;
+border-radius:10px;
+max-width:80%;
+}
 
 #aiInput{
 display:flex;
-border-top:1px solid #1e293b;
+border-top:1px solid #334155;
 }
 
 #aiInput input{
 flex:1;
-background:#020617;
 border:none;
+padding:12px;
+background:#020617;
 color:white;
-padding:10px;
 outline:none;
 }
 
 #aiInput button{
 background:#22c55e;
 border:none;
-color:white;
-padding:10px;
+padding:12px 16px;
 cursor:pointer;
+font-weight:bold;
 }
-
 </style>
 </head>
 
 <body>
 
-<header>Ornum AI Assistant</header>
-<h1> Hi! I am you <b><i>Ornum Aii</i></b> assistant.</h1>
-<div></div>How may I be of assistance today?
-<div id="chat"></div>
+<header>Ornum IT Solutions</header>
 
-<div id="inputArea">
-<input id="prompt" placeholder="Ask anything..." />
-<button onclick="send()">Send</button>
+<section>
+<h2>Computer & Laptop Repairs</h2>
+
+<div class="card">
+✔ Windows Installation  
+✔ Virus Removal  
+✔ Slow PC Speed-up  
+✔ SSD & RAM Upgrades  
+✔ Data Recovery  
+✔ Software Troubleshooting
+</div>
+
+<div class="card">
+<b>Location:</b> Johannesburg  
+<b>WhatsApp:</b> 079 325 7498
+</div>
+
+<div class="card">
+<b>Instant Help:</b>  
+Use our AI assistant to diagnose your computer problem and get a repair quote immediately.
+</div>
+
+</section>
+
+<footer>
+© 2026 Ornum IT Solutions
+</footer>
+
+<!-- AI BUTTON -->
+<div id="aiButton">💬 AI Help</div>
+
+<!-- AI CHAT -->
+<div id="aiBox">
+<div id="aiMessages"></div>
+
+<div id="aiInput">
+<input id="aiText" type="text" placeholder="Describe your computer problem...">
+<button onclick="askAI()">Send</button>
+</div>
 </div>
 
 <script>
 
-const API_KEY = "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";  // <-- IMPORTANT
+const AI_SERVER = "https://ornum-it-website.onrender.com/
+";
 
-function addMessage(text, cls){
-    const div=document.createElement("div");
-    div.className="message "+cls;
-    div.innerText=text;
-    document.getElementById("chat").appendChild(div);
-    document.getElementById("chat").scrollTop=999999;
+let history = JSON.parse(localStorage.getItem("ornum_history")||"[]");
+
+const aiBox=document.getElementById("aiBox");
+const aiBtn=document.getElementById("aiButton");
+const messages=document.getElementById("aiMessages");
+
+aiBtn.onclick=()=>{
+aiBox.style.display = aiBox.style.display==="flex"?"none":"flex";
+};
+
+function addMsg(text,cls){
+const div=document.createElement("div");
+div.className=cls;
+div.innerHTML=text;
+messages.appendChild(div);
+messages.scrollTop=messages.scrollHeight;
 }
 
-async function send(){
-    const input=document.getElementById("prompt");
-    const message=input.value.trim();
-    if(!message) return;
+async function askAI(){
+const input=document.getElementById("aiText");
+const msg=input.value.trim();
+if(!msg) return;
 
-    addMessage(message,"user");
-    input.value="";
+addMsg(msg,"aiUser");
+history.push({role:"user",content:msg});
+localStorage.setItem("ornum_history",JSON.stringify(history));
 
-    addMessage("Thinking...","bot");
+input.value="";
+addMsg("Thinking...","aiBot");
 
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-        method:"POST",
-        headers:{
-            "Authorization":"Bearer "+API_KEY,
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            model:"openai/gpt-4o-mini",
-            messages:[
-                {role:"user",content:message}
-            ]
-        })
-    });
+try{
 
-    const data=await res.json();
-    document.querySelectorAll(".bot").forEach(e=>{
-        if(e.innerText==="Thinking...") e.remove();
-    });
-
-    addMessage(data.choices[0].message.content,"bot");
-}
-
-document.getElementById("prompt")
-.addEventListener("keydown",e=>{
-    if(e.key==="Enter") send();
+const res=await fetch(AI_SERVER,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({messages:history})
 });
 
+const data=await res.json();
+document.querySelectorAll(".aiBot").forEach(e=>{
+if(e.innerText==="Thinking...") e.remove();
+});
+
+addMsg(data.reply,"aiBot");
+
+history.push({role:"assistant",content:data.reply});
+localStorage.setItem("ornum_history",JSON.stringify(history));
+
+detectQuote(data.reply);
+
+}catch(e){
+addMsg("⚠️ AI is offline right now. Please try again later.","aiBot");
+}
+}
+
+/* ---------- AUTO WHATSAPP BOOKING ---------- */
+
+function detectQuote(text){
+
+if(!text.toLowerCase().includes("quote")) return;
+
+const phone="27793257498";
+const msg=encodeURIComponent(
+"Hello Ornum IT, I would like to book a repair. AI quote: "+text
+);
+
+const link=`<br><a href="https://wa.me/${phone}?text=${msg}" target="_blank" style="color:#22c55e;font-weight:bold;">📲 Book on WhatsApp</a>`;
+
+addMsg(link,"aiBot");
+}
+
 </script>
+
 </body>
 </html>
