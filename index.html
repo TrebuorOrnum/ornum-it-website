@@ -384,39 +384,39 @@ cursor:pointer;
 }
 </style>
 
-<div id="aiButton"><a href="./OrnumAii.html">Ask Ornum Aii</a></div>
+<!-- AI BUTTON -->
+<div id="aiButton">💬 AI Help</div>
 
+<!-- AI CHAT -->
+<div id="aiBox">
+<div id="aiMessages"></div>
+
+<div id="aiInput">
+<input id="aiText" type="text" placeholder="Describe your computer problem...">
+<button onclick="askAI()">Send</button>
+</div>
 </div>
 
 <script>
 
-/*const WORKER_URL = "ornum-aii.roubertmunro13.workers.dev";
-*/
-const AI_SERVER = "https://ornum-it-website-aii.onrender.com";
+const AI_SERVER = "https://ornum-it-website.onrender.com";
 
+let history = JSON.parse(localStorage.getItem("ornum_history")||"[]");
 
-let history = JSON.parse(localStorage.getItem("ornum_history") || "[]");
+const aiBox=document.getElementById("aiBox");
+const aiBtn=document.getElementById("aiButton");
+const messages=document.getElementById("aiMessages");
 
-document.getElementById("aiButton").onclick=()=>{
-const box=document.getElementById("aiBox");
-box.style.display = box.style.display==="flex"?"none":"flex";
-loadHistory();
+aiBtn.onclick=()=>{
+aiBox.style.display = aiBox.style.display==="flex"?"none":"flex";
 };
-
-function loadHistory(){
-const container=document.getElementById("aiMessages");
-container.innerHTML="";
-history.forEach(m=>{
-addMsg(m.content, m.role==="user"?"aiUser":"aiBot");
-});
-}
 
 function addMsg(text,cls){
 const div=document.createElement("div");
 div.className=cls;
-div.innerText=text;
-document.getElementById("aiMessages").appendChild(div);
-document.getElementById("aiMessages").scrollTop=999999;
+div.innerHTML=text;
+messages.appendChild(div);
+messages.scrollTop=messages.scrollHeight;
 }
 
 async function askAI(){
@@ -424,69 +424,58 @@ const input=document.getElementById("aiText");
 const msg=input.value.trim();
 if(!msg) return;
 
+addMsg(msg,"aiUser");
 history.push({role:"user",content:msg});
 localStorage.setItem("ornum_history",JSON.stringify(history));
 
-addMsg(msg,"aiUser");
 input.value="";
-
 addMsg("Thinking...","aiBot");
-detectQuote(reply);
 
-const res=await fetch(WORKER_URL,{
+try{
+
+const res=await fetch(AI_SERVER,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({messages:history})
 });
 
 const data=await res.json();
-
 document.querySelectorAll(".aiBot").forEach(e=>{
 if(e.innerText==="Thinking...") e.remove();
 });
 
-const reply=data.choices[0].message.content;
+addMsg(data.reply,"aiBot");
 
-history.push({role:"assistant",content:reply});
+history.push({role:"assistant",content:data.reply});
 localStorage.setItem("ornum_history",JSON.stringify(history));
 
-addMsg(reply,"aiBot");
+detectQuote(data.reply);
+
+}catch(e){
+addMsg("⚠️ AI is offline right now. Please try again later.","aiBot");
 }
+}
+
+/* ---------- AUTO WHATSAPP BOOKING ---------- */
+
 function detectQuote(text){
-if(!text.includes("[QUOTE]")) return;
 
-const service = text.match(/Service:\s*(.*)/)?.[1];
-const cost = text.match(/Estimated Cost:\s*(.*)/)?.[1];
-const notes = text.match(/Notes:\s*(.*)/)?.[1];
+if(!text.toLowerCase().includes("quote")) return;
 
-const message =
-`Hello Ornum IT, I would like to book a repair.
+const phone="27793257498";
+const msg=encodeURIComponent(
+"Hello Ornum IT, I would like to book a repair. AI quote: "+text
+);
 
-Service: ${service}
-Quoted: ${cost}
-Problem: ${notes}
+const link=`<br><a href="https://wa.me/${phone}?text=${msg}" target="_blank" style="color:#22c55e;font-weight:bold;">📲 Book on WhatsApp</a>`;
 
-My name:
-My device model:
-My location:`;
-
-// create WhatsApp button
-const btn=document.createElement("button");
-btn.innerText="Book on WhatsApp";
-btn.style.margin="10px";
-btn.style.background="#25D366";
-btn.style.color="white";
-btn.style.border="none";
-btn.style.padding="10px";
-btn.style.borderRadius="8px";
-
-btn.onclick=()=>{
-window.open("https://wa.me/27615033085?text="+encodeURIComponent(message),"_blank");
-};
-
-document.getElementById("aiMessages").appendChild(btn);
+addMsg(link,"aiBot");
 }
+
 </script>
+
+
+
 
 </body>
 </html>
