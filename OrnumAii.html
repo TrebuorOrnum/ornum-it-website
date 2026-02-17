@@ -140,8 +140,8 @@ font-weight:bold;
 </div>
 
 <div class="card">
-<b>Location:</b> Johannesburg  
-<b>WhatsApp:</b> 079 325 7498
+<b>Location:</b> Cape Town  
+<b>WhatsApp:</b> 068 078 0521
 </div>
 
 <div class="card">
@@ -170,7 +170,9 @@ Use our AI assistant to diagnose your computer problem and get a repair quote im
 
 <script>
 
-const AI_SERVER = "https://ornum-it-website-aii.onrender.com";
+const AI_SERVER = "https://ornum-it-website.onrender.com";
+/*https://api.render.com/deploy/srv-d66ck1ur433s73dh8trg?key=oUcGJSYZ2HA
+*/
 
 let history = JSON.parse(localStorage.getItem("ornum_history")||"[]");
 
@@ -233,7 +235,7 @@ function detectQuote(text){
 
 if(!text.toLowerCase().includes("quote")) return;
 
-const phone="27793257498";
+const phone="27680780521";
 const msg=encodeURIComponent(
 "Hello Ornum IT, I would like to book a repair. AI quote: "+text
 );
