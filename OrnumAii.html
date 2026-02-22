@@ -205,8 +205,7 @@ input.value="";
 addMsg("Thinking...","aiBot");
 
 try{
-
-const res=await fetch(AI_SERVER,{
+const res = await fetch(AI_SERVER + "/api/chat",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({messages:history})
